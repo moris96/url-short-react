@@ -6,7 +6,7 @@ const AnimateBackground = () => {
     <div className='background'>
       <div className='wave' />
     </div>
-  )
-}
+  );
+};
 
 export default AnimateBackground

@@ -1,4 +1,5 @@
 import AnimateBackground from "./components/AnimateBackground/AnimateBackground";
+import Input from "./components/Input/Input";
 
 
 
@@ -6,12 +7,13 @@ function App() {
   return (
     <div className="App">
 
-      {/* remove this h1 once other components are added */}
-      
-      <h1 className="testing">URL Shortener App</h1>
       <AnimateBackground/>
+
+      <Input/>
+
+      
     </div>
   );
-}
+};
 
 export default App;
