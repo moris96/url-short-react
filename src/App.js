@@ -8,20 +8,15 @@ import { useState } from 'react';
 
 function App() {
 
-  const [inputVal, setInputVal] = useState("")
+  const [inputValue, setInputValue] = useState("");
 
 
 
   return (
     <div className="App">
-
-      <UrlShortener setInputValue={setInputVal}/>
-
+      <Input setInputValue={setInputValue}/>
       <AnimateBackground/>
-
-      <Input setInputValue={inputVal}/>
-
-      
+      <UrlShortener setInputValue={inputValue}/>
     </div>
   );
 };

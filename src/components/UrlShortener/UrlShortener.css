@@ -1,3 +1,47 @@
 .ttt {
     color: red;
 }
+
+
+
+.result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+}
+
+
+/* .result {
+    height: -5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} */
+
+.result-p {
+    color: #fff;
+    border: 1px solid rgb(235, 178, 73);;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    width: 10%;
+    height: 15px;
+}
+
+.result button {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background: rgb(235, 178, 73);;
+    border: none;
+}
+
+.result button.copied {
+    background: #fff;
+    color: rgb(235, 178, 73);
+}
+
+.no-data {
+    color: #fff;
+    font-size: 1rem;
+}
