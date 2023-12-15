@@ -1,21 +1,26 @@
 import AnimateBackground from "./components/AnimateBackground/AnimateBackground";
-import Input from "./components/Input/Input";
-import UrlShortener from "./components/UrlShortener/UrlShortener";
+// import Input from "./components/Input/Input";
+// import UrlShortener from "./components/UrlShortener/UrlShortener";
 
-import { useState } from 'react';
+// import { useState } from 'react';
+
+import LinkShortener from "./components/LinkShortener/LinkShortener";
 
 
 
 function App() {
 
-  const [inputValue, setInputValue] = useState("");
+  // const [inputValue, setInputValue] = useState("");
   
 
   return (
     <div className="App">
-      <Input setInputValue={setInputValue}/>
+
+      <LinkShortener/>
+      
+      {/* <Input setInputValue={setInputValue}/> */}
       <AnimateBackground/>
-      <UrlShortener inputValue={inputValue}/>
+      {/* <UrlShortener inputValue={inputValue}/> */}
     </div>
   );
 };

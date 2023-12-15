@@ -8,22 +8,28 @@ import './UrlShortener.css'
 
 const UrlShortener = ({ inputValue }) => {
 
-    const [shortenLink, setShortenLink] = useState("");
+    const [shortenedLink, setShortenedLink] = useState("")
     const [copied, setCopied] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+
+    console.log(inputValue)
+    console.log(shortenedLink)
   
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await axios(`https://api.shrtco.de/v2/shorten?url=${inputValue}`);
-        setShortenLink(res.data.result.full_short_link);
+        // const res = await axios(`https://api.shrtco.de/v2/shorten?url=${inputValue}`)
+        const res = await axios(`https://api.rebrandly.com/v1/links`)
+        setShortenedLink(res.data.result.full_short_link);
       } catch(err) {
         setError(err);
       } finally {
         setLoading(false);
       }
     }
+
+
   
     useEffect(() => {
       if(inputValue.length) {
@@ -31,10 +37,17 @@ const UrlShortener = ({ inputValue }) => {
       }
     }, [inputValue]);
   
+
+    // useEffect(() => {
+    //   const timer = setTimeout(() => {
+    //     setCopied(false);
+    //   }, 1000);
+
     useEffect(() => {
-      const timer = setTimeout(() => {
-        setCopied(false);
-      }, 1000);
+        const timer = setTimeout(() => {
+            setCopied(false)
+        }, 1000)
+
   
       return () => clearTimeout(timer);
     }, [copied]);
@@ -49,10 +62,10 @@ const UrlShortener = ({ inputValue }) => {
 
   return (
     <>
-        {shortenLink && (
+        {shortenedLink && (
         <div className='result'>
-        <p className='result-p'>{shortenLink}</p>
-        <CopyToClipboard text={shortenLink} onCopy={()=>setCopied(true)}>
+        <p className='result-p'>{shortenedLink}</p>
+        <CopyToClipboard text={shortenedLink} onCopy={()=>setCopied(true)}>
             <button className={copied ? "copied" : ""}>Copy This</button>
         </CopyToClipboard>
         </div>
@@ -66,6 +79,7 @@ const UrlShortener = ({ inputValue }) => {
                     <button className={copied ? "copied" : ""}>Copy This</button>
                 </CopyToClipboard>
         </div> */}
+
     </>
   );
 };
