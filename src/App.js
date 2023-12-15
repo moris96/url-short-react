@@ -9,14 +9,13 @@ import { useState } from 'react';
 function App() {
 
   const [inputValue, setInputValue] = useState("");
-
-
+  
 
   return (
     <div className="App">
       <Input setInputValue={setInputValue}/>
       <AnimateBackground/>
-      <UrlShortener setInputValue={inputValue}/>
+      <UrlShortener inputValue={inputValue}/>
     </div>
   );
 };

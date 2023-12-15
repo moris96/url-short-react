@@ -9,39 +9,42 @@ import './UrlShortener.css'
 const UrlShortener = ({ inputValue }) => {
 
     const [shortenLink, setShortenLink] = useState("");
-    const [copied, setCopied] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(false)
-
+    const [copied, setCopied] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+  
     const fetchData = async () => {
-        try {
-          setLoading(true);
-          const res = await axios(`https://api.shrtco.de/v2/shorten?url=${inputValue}`);
-          setShortenLink(res.data.result.full_short_link);
-        } catch(err) {
-          setError(err);
-        } finally {
-          setLoading(false);
-        }
+      try {
+        setLoading(true);
+        const res = await axios(`https://api.shrtco.de/v2/shorten?url=${inputValue}`);
+        setShortenLink(res.data.result.full_short_link);
+      } catch(err) {
+        setError(err);
+      } finally {
+        setLoading(false);
       }
-
-      useEffect(() => {
-        if(inputValue) fetchData();
-      }, [inputValue]);
-    
-      useEffect(() => {
-        const timer = setTimeout(() => {
-          setCopied(false);
-        }, 1000);
-        return () => clearTimeout(timer);
-      }, [copied]);
-    
-      if(loading) {
-        return <p className="no-data">Loading...</p>
+    }
+  
+    useEffect(() => {
+      if(inputValue.length) {
+        fetchData();
       }
-      if(error) {
-        return <p className="no-data">error!</p>
-      }
+    }, [inputValue]);
+  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setCopied(false);
+      }, 1000);
+  
+      return () => clearTimeout(timer);
+    }, [copied]);
+  
+    if(loading) {
+      return <p className="no-data">Loading...</p>
+    }
+    if(error) {
+      return <p className="no-data">error</p>
+    }
 
 
   return (
@@ -55,7 +58,7 @@ const UrlShortener = ({ inputValue }) => {
         </div>
         )}
 
-        <h1 className='ttt'>hello world</h1>
+        {/* <h1 className='ttt'>hello world</h1> */}
 
         {/* <div className='result'>
                 <p className='result-p'>{shortenLink}</p>
